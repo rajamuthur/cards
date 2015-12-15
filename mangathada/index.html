@@ -70,6 +70,21 @@ body {
 
 	</style>
 	<script>
+function allowDrop(ev) {
+    ev.preventDefault();
+}
+
+function drag(ev) {
+    ev.dataTransfer.setData("text", ev.target.id);
+}
+
+function drop(ev) {
+    ev.preventDefault();
+    var data = ev.dataTransfer.getData("text");
+    ev.target.appendChild(document.getElementById(data));
+}
+</script>
+	<script>
 		function resize(){
 			var w = window.innerWidth;
 			var h = window.innerHeight;
@@ -81,16 +96,16 @@ body {
 	<div class="container">
 		<div class="toplayer">
 			<div class="topplayerdetails">
-				<img src="men.png" title="player" />
+				<img src="men.png" title="player"  draggable="true" ondragstart="drag(event)" id="drag3"/>
 			</div>
 		</div>
 		<div class="leftlayer">
 			<div class="leftplayerdetails">
-				<img src="women.png" title="player" />
+				<img src="women.png" title="player"  draggable="true" ondragstart="drag(event)" id="drag2"/>
 			</div>
 		</div>
 		<div class="centerlayer">
-			<div class="board">
+			<div class="board" ondrop="drop(event)" ondragover="allowDrop(event)">
 				
 			</div>
 		</div>
@@ -100,8 +115,8 @@ body {
 			</div>
 		</div>
 		<div class="bottomlayer">
-			<div class="bottomplayerdetails">
-				<img src="women.png" title="player" />
+			<div class="bottomplayerdetails" ondrop="drop(event)" ondragover="allowDrop(event)">
+				<img src="women.png" title="player" draggable="true" ondragstart="drag(event)" id="drag1"/>
 			</div>
 		</div>
 	</div>
