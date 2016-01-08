@@ -1,146 +1,42 @@
-<!DOCTYPE HTML>
-<html>
-<style rel="stylesheet" type="text/css">
-body
-{
-	width:100%;
-	margin:0;
-	padding:0;
-	font:15px arial,sans-serif;
-}
-.container
-{
-	margin: 0 auto;
-	width:960px;
-}
-.row
-{
-	padding:10px;
-	width:940px;
-	height:auto;
-}
-.right
-{
-	float:left;
-	height:340px;
-	width:320px;
-	padding:10px 10px 10px 10px;
-	border:1px solid black;
-}
-.left
-{
-	float:left;
-	height:340px;
-	width:480px;
-	padding:10px 10px 10px 10px;
-	border:1px solid black;
-}
-.center
-{
-	float:left;
-	height:360px;
-	width:80px;
-}
-.left:hover,.right:hover,img:hover
-{
-	border:1px solid gray;
-	box-shadow:2px 2px 2px black;
-}
-img
-{
-	display:inline;
-}
-img:hover
-{
-	cursor:move;
-}
-
-</style>
-<script type="text/javascript" src="js/jquery.min.js"></script>
-<script type="text/javascript">
-function drag(target, e)
-{
-	e.dataTransfer.setData("Text",target.id);
-}
-
-function drop(target, e)
-{
-	var data=e.dataTransfer.getData("Text");
-	target.appendChild(document.getElementById(data));
-	e.preventDefault();
-}
-</script>
-
-<script type="text/javascript">
-function countImages() 
-{
-var get=document.getElementById('preview_images_gallery');
-var allget=get.getElementsByTagName('img');
-	if(allget.length != 9)
-	{
-		alert("please select the 9 images");
-		return false;
-	}
-	else
-	{
-		alert("you are select "+allget.length+" images1");
-		$(document).ready(function()
-		{
-		alert("you are select "+allget.length+" images2");
-		var tutorials = ["one", "two", "three","four", "five", "six","seven", "eight", "nine"];
-		var j=0;
-		var id = [];
-		alert("you are select "+allget.length+" images3");
-			$("#preview_images_gallery").children().each(function(n, i) 
-			{
-				var id = this.id;
-				$("#"+tutorials[j]).val(id);
-				j++;
-			});
-		alert("you are select "+allget.length+" images4");
-		});
-	}
-}
-</script>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>droppable demo</title>
+  <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+  <style>
+  #draggable {
+    width: 100px;
+    height: 100px;
+    background: #ccc;
+  }
+  #droppable {
+    position: absolute;
+    left: 250px;
+    top: 0;
+    width: 125px;
+    height: 125px;
+    background: #999;
+    color: #fff;
+    padding: 10px;
+  }
+  </style>
+  <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+</head>
 <body>
-<div class="container">
-<hr/>
-<h2 align="center">IMPIGER TECHNOLOGIES</h2>
-<hr/>
-<h3 align="left">Drag and Drop:HTML5</h3>
-	<div class="row">
-		<div class="left" ondrop="drop(this, event)" ondragenter="return false" ondragover="return false">
-			<img src="images/1c.png" id="1c" name="1" width="73" height="98" draggable="true" ondragstart="drag(this, event)">
-			<img src="images/4a.png" id="4a" name="2" width="73" height="98" draggable="true" ondragstart="drag(this, event)">
-			<img src="images/2c.png" id="2c" name="3" width="73" height="98" draggable="true" ondragstart="drag(this, event)">
-			<img src="images/6h.png" id="6h" name="4" width="73" height="98" draggable="true" ondragstart="drag(this, event)">
-			<img src="images/3c.png" id="3c" name="5" width="73" height="98" draggable="true" ondragstart="drag(this, event)">
-			<img src="images/5c.png" id="5c" name="6" width="73" height="98" draggable="true" ondragstart="drag(this, event)">
-			<img src="images/4c.png" id="4c" name="7" width="73" height="98" draggable="true" ondragstart="drag(this, event)">
-			<img src="images/6c.png" id="6c" name="8" width="73" height="98" draggable="true" ondragstart="drag(this, event)">
-			<img src="images/7c.png" id="7c" name="9" width="73" height="98" draggable="true" ondragstart="drag(this, event)">
-			<img src="images/9c.png" id="9c" name="10" width="73" height="98" draggable="true" ondragstart="drag(this, event)">
-			<img src="images/8c.png" id="8c" name="11" width="73" height="98" draggable="true" ondragstart="drag(this, event)">
-		</div>
-		<div class="center">
-			
-		</div>
-		<form method="post" name="myform" id="myform" action="getid.php" onsubmit="return countImages()">
-		<div class="right"  ondrop="drop(this, event)" ondragenter="return false" ondragover="return false" id='preview_images_gallery'>
-			
-		</div>
-		<div style="padding:10px;"><input type="submit" name="submit" value="Done"></div>
-		<input type="hidden" id="one" name="c1" value="">
-		<input type="hidden" id="two" name="c2" value="">
-		<input type="hidden" id="three" name="c3" value="">
-		<input type="hidden" id="four" name="c4" value="">
-		<input type="hidden" id="five" name="c5" value="">
-		<input type="hidden" id="six" name="c6" value="">
-		<input type="hidden" id="seven" name="c7" value="">
-		<input type="hidden" id="eight" name="c8" value="">
-		<input type="hidden" id="nine" name="c9" value="">
-		</form>
-	</div>
-</div>
+ 
+<div id="droppable">Drop here</div>
+<div id="draggable">Drag me</div>
+ 
+<script>
+$( "#draggable" ).draggable();
+$( "#droppable" ).droppable({
+  drop: function() {
+    alert( "dropped" );
+  }
+});
+</script>
+ 
 </body>
 </html>
